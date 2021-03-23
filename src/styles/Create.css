@@ -1,0 +1,89 @@
+.lollyFlavourDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+}
+.lollyFormDiv {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5rem;
+}
+.colorPickerLabel {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 20px;
+  overflow: hidden;
+}
+.colorPicker {
+  width: 80px;
+  height: 80px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+.form-container {
+  padding: 1em 2em;
+  margin-bottom: 1.5em;
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  text-align: left;
+  font-style: italic;
+  font-size: 1.1em;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+label {
+  color: #fff;
+}
+.error {
+  color: red;
+}
+.form-container > input,
+textarea {
+  font-size: 0.9em;
+  width: 100%;
+  padding: 0.5em 0.3em;
+  margin: 0 -0.2em;
+  border: 1px solid #fa73d9;
+  color: #fff;
+  background-color: #222;
+  box-shadow: 0 0 6px #fa73d9;
+}
+.space-mob {
+  display: none;
+}
+@media (max-width: 425px) {
+  .lollyFlavourDiv {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+  }
+  .lollyFormDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* margin-top: 5rem; */
+  }
+  .form-container {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+  }
+  .create {
+    width: 100%;
+  }
+  .space-mob {
+    height: 6rem;
+    display: inline-block;
+  }
+}
