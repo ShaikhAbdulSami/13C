@@ -12,9 +12,9 @@ const NewLolly = async (addlolly: LollyType) => {
   }
   try {
     await Client.put(params).promise()
-    await codepipeline.startPipelineExecution({
-      name: 'VirtualStack-GatsbyPipelineA39796C7-1DX53OX5RUS16'
-    }).promise()
+    // await codepipeline.startPipelineExecution({
+    //   name:  ''
+    // }).promise()
     return addlolly
   } catch (error) {
     return error.toString()

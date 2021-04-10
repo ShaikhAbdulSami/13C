@@ -16,9 +16,6 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "gatsby": "^3.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "@apollo/client": "^3.3.8",
     "@babel/core": "^7.12.13",
     "@material-ui/core": "^4.11.3",
@@ -27,9 +24,12 @@
     "@typescript-eslint/parser": "^4.14.2",
     "babel-loader": "^8.2.2",
     "formik": "^2.2.6",
+    "gatsby": "^2.32.3",
     "gatsby-plugin-material-ui": "^2.1.10",
     "gatsby-plugin-typescript": "^2.12.0",
     "gatsby-source-graphql": "^2.14.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
     "shortid": "^2.2.16",
     "typescript": "^4.1.3",
