@@ -64,11 +64,11 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
                           link: id, 
                       }
                   },
-                  refetchQueries: [{ query: ADD_LOLLY }],
+                //   refetchQueries: [{ query: ADD_LOLLY }],
               })
             }
             submitLollyForm()
-            refetch()
+            // refetch()
             navigate(`/lolly/${id}`)
 
 
@@ -93,7 +93,7 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
                 <div>
                     <Lolly top={color1} middle={color2} bottom={color3} />
                 </div>
-                {!data ? <> <div className="lollyFlavourDiv">
+                 <> <div className="lollyFlavourDiv">
                     <label htmlFor="flavourTop" className="colorPickerLabel">
                         <input
                             type="color"
@@ -171,7 +171,7 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
 
                         </div>
                         <button type="submit">Freeze this lolly and get a link</button>
-                    </form></> : <Result link={data?.AddLolly?.link} reciever={data?.AddLolly?.reciever} sender={data?.AddLolly?.sender} message={data?.AddLolly?.message} />}
+                    </form></>
             </div>
         </div >
     )
