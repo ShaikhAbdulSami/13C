@@ -17,9 +17,9 @@
       fieldName: "get_lollies",
       // Url to query from
       url:
-        "https://k7u3vxfyevg2porbvdv26lnlqy.appsync-api.us-east-1.amazonaws.com/graphql",
+        "https://6nlofoz2onbr3gmfyso4jhebvy.appsync-api.us-east-1.amazonaws.com/graphql",
         headers: {
-          "x-api-key": "da2-2cf7tu644zcuvb3xyw5olupcte"
+          "x-api-key": "da2-7iamldls7vaidnmjdomsg27sre"
         }
     },
   },],

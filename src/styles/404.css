@@ -1,0 +1,78 @@
+.lollyRecieved {
+margin-right: 2rem;
+margin-left: 2rem;
+}
+
+.recievedContentContainer {
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+padding: 1rem;
+}
+
+.recievedTextContainer {
+padding: 1.3rem;
+display: flex;
+flex-direction: column;
+align-content: space-between;
+justify-content: space-between;
+flex-grow: 0.4;
+background-color: rgba(179, 179, 179, 0.1);
+border-radius: 10rem;
+box-shadow: 0px 5px 10px pink;
+margin-top: 2rem;
+margin-bottom: 1rem;
+}
+
+.recievedTextContainer h3 {
+font-size: 2rem;
+color: white;
+font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande","Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+text-shadow: 5px 10px 5px purple;
+}
+
+.recievedTextContainer p {
+font-size: 1.3rem;
+color: white;
+}
+
+.recievedTextContainer h4 {
+font-size: 1.7rem;
+color: white;
+font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+text-shadow: 5px 10px 5px purple;
+}
+
+.sharableLink {
+background-color: white;
+font-size: 1.1rem;
+padding: 0.5rem;
+color: black;
+display: inline-block;
+margin-bottom: 2rem;
+}
+
+.sharableLinkContainer {
+font-size: 1.1rem;
+color: white;
+background-color: grey;
+display: inline-block;
+padding: 0.5rem;
+margin-top: -2rem;
+}
+
+.pageNotFound {
+font-size: 2rem;
+text-align: center;
+margin: 2rem auto;
+color: white;
+}
+
+.loading {
+font-size: 2rem;
+text-align: center;
+margin: 2rem auto;
+color: white;
+}

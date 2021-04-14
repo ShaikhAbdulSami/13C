@@ -1,7 +1,7 @@
-import AllLolly from "./Lolly"
+import AllLolly from "./AllLolly"
 import AddLolly from "./AddLolly"
-import { LollyType } from "./lollyType"
-import GetByPath from "./GetByPath"
+import { LollyType } from "./lolly"
+import getLollyByPath from "./getLollyByPath"
 
 type AppsyncType = {
   info: {
@@ -19,8 +19,8 @@ exports.handler = async (event: AppsyncType) => {
       return await AllLolly()
     case "AddLolly":
       return await AddLolly(event.arguments.addlolly)
-      case "GetByPath":
-        return await GetByPath(event.arguments.link)
+    case "getLollyByPath":
+      return await getLollyByPath(event.arguments.link)
     default:
       return null
   }

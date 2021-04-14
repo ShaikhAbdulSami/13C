@@ -69,7 +69,7 @@ const DisplayingErrorMessagesSchema = Yup.object().shape({
             }
             submitLollyForm()
             refetch()
-            // navigate(`/lolly/${id}`)
+            navigate(`/lolly/${id}`)
 
 
         },

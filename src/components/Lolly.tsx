@@ -3,6 +3,7 @@ export interface LollyProps {
     top: string;
     middle: string;
     bottom: string;
+    className? : string
 }
 export const Lolly: React.FC<LollyProps> = ({ top, middle, bottom }) => {
     return (
