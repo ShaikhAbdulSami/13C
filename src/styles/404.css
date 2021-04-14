@@ -1,6 +1,7 @@
 .lollyRecieved {
 margin-right: 2rem;
 margin-left: 2rem;
+justify-content: center;
 }
 
 .recievedContentContainer {
@@ -52,6 +53,7 @@ padding: 0.5rem;
 color: black;
 display: inline-block;
 margin-bottom: 2rem;
+justify-content: center;
 }
 
 .sharableLinkContainer {
@@ -61,6 +63,7 @@ background-color: grey;
 display: inline-block;
 padding: 0.5rem;
 margin-top: -2rem;
+justify-content: center;
 }
 
 .pageNotFound {

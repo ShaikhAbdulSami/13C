@@ -3,6 +3,7 @@ import {Lolly} from "../components/Lolly"
 import Header from "../components/Header"
 import { useQuery, gql } from "@apollo/client"
 import "../styles/404.css"
+import Result from "../components/Result"
 
 const GET_LOLLY_BY_PATH = gql`
   query get_lollies($link: String!) {
@@ -25,37 +26,22 @@ export default function NotFound({ location }) {
   const { loading, error, data } = useQuery(GET_LOLLY_BY_PATH, {
     variables: { link: `${queryPath}` },
   })
-
   return (
     <div>
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
         <div>
-          <Header/>
-          <h5 className="sharableLinkContainer">Your sharable link: </h5>{" "}
-          <span className="sharableLink">
-            {" "}
-            {`http://localhost:8888/lolly/${data.getLollyByPath.link}`}
-          </span>
-          <div className="recievedContentContainer">
-            <Lolly
-              className="lollyRecieved"
-              top={data.getLollyByPath.color1}
-              middle={data.getLollyByPath.color2}
-              bottom={data.getLollyByPath.color3}
-            />
+        <Header />
+        <div className="lollyFormDiv">
 
-            <div className="recievedTextContainer">
-              <h3>HI {data.getLollyByPath.reciever.toUpperCase()}</h3>
-              <p>{data.getLollyByPath.message}</p>
-              <h4>From: {data.getLollyByPath.sender}</h4>
+            <div>
+                <Lolly top={data.getLollyByPath.color1} middle={data.getLollyByPath.color2} bottom={data.getLollyByPath.color3} />
             </div>
-          </div>
+
+            <Result link={data.getLollyByPath.link} reciever={data.getLollyByPath.reciever} sender={data.getLollyByPath.sender} message={data.getLollyByPath.message} />
         </div>
-      )} : (
-        <div className="pageNotFound">{error}</div>
-      )
+    </div>)}
     </div>
   )
 }
