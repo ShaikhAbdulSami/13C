@@ -1,6 +1,6 @@
 import React from "react"
 import {Lolly} from "../components/Lolly"
-import Header from "../components/header"
+import Header from "../components/Header"
 import { useQuery, gql } from "@apollo/client"
 import "../styles/404.css"
 

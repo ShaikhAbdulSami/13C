@@ -142,99 +142,99 @@ export class LollyServerStack extends cdk.Stack {
         value: dist.distributionDomainName
       });
   
-      // // Artifact from source stage
-      // const sourceOutput = new CodePipeline.Artifact();
+      // Artifact from source stage
+      const sourceOutput = new CodePipeline.Artifact();
   
-      // // Artifact from build stage
-      // const S3Output = new CodePipeline.Artifact();
+      // Artifact from build stage
+      const S3Output = new CodePipeline.Artifact();
   
-      // //Code build action, Here you will define a complete build
-      // const s3Build = new CodeBuild.PipelineProject(this, 's3Build', {
-      //   buildSpec: CodeBuild.BuildSpec.fromObject({
-      //     version: '0.2',
-      //     phases: {
-      //       install: {
-      //         "runtime-versions": {
-      //           "nodejs": 12
-      //         },
-      //         commands: [
-      //           // 'cd stepxx_CI_CD_pipeline_update_frontend',
-      //           // 'cd lollypop',
-      //           'npm i -g gatsby',
-      //           'npm install',
-      //         ],
-      //       },
-      //       build: {
-      //         commands: [
-      //           'gatsby build',
-      //         ],
-      //       },
-      //     },
-      //     artifacts: {
-      //       'base-directory': './public',   ///outputting our generated Gatsby Build files to the public directory
-      //       "files": [
-      //         '**/*'
-      //       ]
-      //     },
-      //   }),
-      //   environment: {
-      //     buildImage: CodeBuild.LinuxBuildImage.STANDARD_3_0,   ///BuildImage version 3 because we are using nodejs environment 12
-      //   },
-      // });
+      //Code build action, Here you will define a complete build
+      const s3Build = new CodeBuild.PipelineProject(this, 's3Build', {
+        buildSpec: CodeBuild.BuildSpec.fromObject({
+          version: '0.2',
+          phases: {
+            install: {
+              "runtime-versions": {
+                "nodejs": 12
+              },
+              commands: [
+                // 'cd stepxx_CI_CD_pipeline_update_frontend',
+                // 'cd lollypop',
+                'npm i -g gatsby',
+                'npm install',
+              ],
+            },
+            build: {
+              commands: [
+                'gatsby build',
+              ],
+            },
+          },
+          artifacts: {
+            'base-directory': './public',   ///outputting our generated Gatsby Build files to the public directory
+            "files": [
+              '**/*'
+            ]
+          },
+        }),
+        environment: {
+          buildImage: CodeBuild.LinuxBuildImage.STANDARD_3_0,   ///BuildImage version 3 because we are using nodejs environment 12
+        },
+      });
   
-      // // const policy = new PolicyStatement();
-      // // policy.addActions('s3:*');
-      // // policy.addActions('codepipeline:*');
-      // // policy.addActions('lambda:*');
-      // // policy.addResources('*');
+      // const policy = new PolicyStatement();
+      // policy.addActions('s3:*');
+      // policy.addActions('codepipeline:*');
+      // policy.addActions('lambda:*');
+      // policy.addResources('*');
   
-      // // LollyLambda.addToRolePolicy(policy);
+      // LollyLambda.addToRolePolicy(policy);
   
-      // ///Define a pipeline
-      // const pipeline = new CodePipeline.Pipeline(this, 'GatsbyPipeline', {
-      //   crossAccountKeys: false,  //Pipeline construct creates an AWS Key Management Service (AWS KMS) which cost $1/month. this will save your $1.
-      //   restartExecutionOnUpdate: true,  //Indicates whether to rerun the AWS CodePipeline pipeline after you update it.
-      // });
+      ///Define a pipeline
+      const pipeline = new CodePipeline.Pipeline(this, 'GatsbyPipeline', {
+        crossAccountKeys: false,  //Pipeline construct creates an AWS Key Management Service (AWS KMS) which cost $1/month. this will save your $1.
+        restartExecutionOnUpdate: true,  //Indicates whether to rerun the AWS CodePipeline pipeline after you update it.
+      });
       
-      // LollyLambda.addEnvironment("PIPLINE_NAME", pipeline.pipelineName)
-      // ///Adding stages to pipeline
+      LollyLambda.addEnvironment("PIPLINE_NAME", pipeline.pipelineName)
+      ///Adding stages to pipeline
   
-      // //First Stage Source
-      // pipeline.addStage({
-      //   stageName: 'Source',
-      //   actions: [
-      //     new CodePipelineAction.GitHubSourceAction({
-      //       actionName: 'Checkout',
-      //       owner: 'ShaikhAbdulSami',
-      //       repo: "Virtual-Lolly",
-      //       oauthToken: cdk.SecretValue.secretsManager('GITHUB_TOKEN'), ///create token on github and save it on aws secret manager
-      //       output: sourceOutput,                                       ///Output will save in the sourceOutput Artifact
-      //       branch: "master",                                           ///Branch of your repo
-      //     }),
-      //   ],
-      // })
+      //First Stage Source
+      pipeline.addStage({
+        stageName: 'Source',
+        actions: [
+          new CodePipelineAction.GitHubSourceAction({
+            actionName: 'Checkout',
+            owner: 'ShaikhAbdulSami',
+            repo: "13C",
+            oauthToken: cdk.SecretValue.secretsManager('GITHUB_TOKEN'), ///create token on github and save it on aws secret manager
+            output: sourceOutput,                                       ///Output will save in the sourceOutput Artifact
+            branch: "master",                                           ///Branch of your repo
+          }),
+        ],
+      })
   
-      // pipeline.addStage({
-      //   stageName: 'Build',
-      //   actions: [
-      //     new CodePipelineAction.CodeBuildAction({
-      //       actionName: 's3Build',
-      //       project: s3Build,
-      //       input: sourceOutput,
-      //       outputs: [S3Output],
-      //     }),
-      //   ],
-      // })
+      pipeline.addStage({
+        stageName: 'Build',
+        actions: [
+          new CodePipelineAction.CodeBuildAction({
+            actionName: 's3Build',
+            project: s3Build,
+            input: sourceOutput,
+            outputs: [S3Output],
+          }),
+        ],
+      })
   
-      // pipeline.addStage({
-      //   stageName: 'Deploy',
-      //   actions: [
-      //     new CodePipelineAction.S3DeployAction({
-      //       actionName: 's3Build',
-      //       input: S3Output,
-      //       bucket: myBucket,
-      //     }),
-      //   ],
-      // })
+      pipeline.addStage({
+        stageName: 'Deploy',
+        actions: [
+          new CodePipelineAction.S3DeployAction({
+            actionName: 's3Build',
+            input: S3Output,
+            bucket: myBucket,
+          }),
+        ],
+      })
   }
 }
