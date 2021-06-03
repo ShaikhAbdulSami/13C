@@ -209,7 +209,7 @@ export class LollyServerStack extends cdk.Stack {
             repo: "13C",
             oauthToken: cdk.SecretValue.secretsManager('GITHUB_TOKEN'), ///create token on github and save it on aws secret manager
             output: sourceOutput,                                       ///Output will save in the sourceOutput Artifact
-            branch: "master",                                           ///Branch of your repo
+            branch: "Dev",                                           ///Branch of your repo
           }),
         ],
       })
