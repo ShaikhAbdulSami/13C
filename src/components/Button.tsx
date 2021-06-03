@@ -9,7 +9,7 @@ interface Button {
     padding?: string
 }
 
-const Button: React.FC<Button> = ({value, type, onClick, style, className, padding}) => {
+export const Button: React.FC<Button> = ({value, type, onClick, style, className, padding}) => {
 
     const typeVal = type? type: "button";
     const classNameVal = className? className: '';
